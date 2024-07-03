@@ -17,7 +17,12 @@ default: &default
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  pool: <%= ENV["RAILS_MAX_THREADS"] %>
+  timeout: 5000
+  username: <%= ENV["DB_PGSQL_USERNAME"] %>
+  password: <%= ENV["DB_PGSQL_PASSWORD"] %>
+  host: <%= ENV["DB_PGSQL_HOST"] %>
+  port: <%= ENV["DB_PGSQL_PORT"] %>
 
 development:
   <<: *default
